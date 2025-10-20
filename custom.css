@@ -1,0 +1,203 @@
+/* ================================================== */
+/*                  ENHANCED DARK MODE CSS           */
+/*                for Sphinx RTD Theme               */
+/* ================================================== */
+
+/* === LAYOUT OVERRIDES === */
+.wy-nav-content {
+    max-width: 100% !important;
+}
+
+/* === DARK MODE COLOR SCHEME === */
+:root {
+    /* Define color variables for consistency */
+    --dark-bg: #1c1c1c;
+    --dark-bg-alt: #282828;
+    --dark-bg-hover: #333333;
+    --light-text: #e0e0e0;
+    --light-text-alt: #c0c0c0;
+    --accent-blue: #40B4E8;
+    --link-blue: #0567b8;
+    --highlight-yellow: #f1c40f;
+    --border-dark: #555555;
+    --table-odd: #2e2e2e;
+    --table-even: #262626;
+}
+
+/* === BODY AND MAIN CONTENT === */
+body {
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+}
+
+.wy-nav-content,
+.wy-nav-content-wrap {
+    background-color: var(--dark-bg);
+}
+
+/* === SIDEBAR AND NAVIGATION === */
+.wy-side-nav-search, 
+.wy-nav-top {
+    background: var(--dark-bg-alt);
+    border-color: var(--border-dark);
+}
+
+/* Navigation menu styling */
+.wy-menu-vertical a {
+    color: var(--light-text);
+    transition: background-color 0.15s ease-in-out;
+}
+
+.wy-menu-vertical li.current > a {
+    background: var(--dark-bg-hover);
+}
+
+.wy-menu-vertical li.toctree-l1.current > a {
+    color: var(--accent-blue);
+}
+
+.wy-menu-vertical a:hover {
+    background: var(--dark-bg-hover);
+    color: #ffffff;
+}
+
+/* === LINKS === */
+/* General links - consolidated from duplicates */
+a, 
+a:link, 
+a:visited {
+    color: var(--accent-blue);
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+/* === CODE BLOCKS === */
+/* Inline code */
+code.docutils.literal {
+    color: var(--light-text);
+    background-color: var(--dark-bg-hover);
+    border: 1px solid var(--border-dark);
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* Code blocks with syntax highlighting */
+div.highlight pre {
+    background-color: var(--dark-bg-alt) !important;
+    color: var(--light-text);
+    border: 1px solid var(--border-dark);
+}
+
+/* === TABLES === */
+/* Table headers */
+table.docutils th {
+    background-color: var(--dark-bg) !important;
+    color: #ffffff !important;
+    border-color: var(--border-dark) !important;
+}
+
+/* Table cells - inherit from rows */
+table.docutils td {
+    background-color: inherit !important;
+    color: inherit !important;
+    border-color: var(--border-dark) !important;
+}
+
+/* Table rows - improved contrast */
+.row-odd {
+    background: var(--table-odd) !important;
+    color: var(--light-text) !important;
+}
+
+.row-even {
+    background: var(--table-even) !important;
+    color: var(--light-text-alt) !important;
+}
+
+/* === ADMONITIONS (Notes, Warnings, etc.) === */
+div.admonition {
+    background-color: var(--dark-bg-alt);
+    border-color: var(--border-dark);
+    color: var(--light-text);
+}
+
+div.admonition p {
+    color: var(--light-text);
+}
+
+/* Specific admonition types */
+div.admonition.note {
+    border-left: 4px solid var(--accent-blue);
+}
+
+div.admonition.warning {
+    border-left: 4px solid #f39c12;
+}
+
+div.admonition.danger {
+    border-left: 4px solid #e74c3c;
+}
+
+/* === SEARCH HIGHLIGHTING === */
+/* Consolidated and improved search highlights */
+span.highlighted,
+.rst-content .highlighted,
+.wy-nav-content-wrap .highlighted,
+article .highlighted {
+    background-color: var(--highlight-yellow) !important;
+    color: #333333 !important;
+    box-shadow: 0 0 0 2px var(--highlight-yellow);
+    font-weight: 700;
+    padding: 1px 2px;
+    border-radius: 2px;
+}
+
+/* === FORMS AND INPUTS === */
+input[type="text"],
+input[type="search"] {
+    background-color: var(--dark-bg-alt);
+    color: var(--light-text);
+    border: 1px solid var(--border-dark);
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus {
+    background-color: var(--dark-bg-hover);
+    border-color: var(--accent-blue);
+}
+
+/* === CONTENT SECTIONS === */
+/* Improve readability of content sections */
+.rst-content div[class^="highlight"] {
+    margin: 1em 0;
+}
+
+/* === RESPONSIVE IMPROVEMENTS === */
+@media (max-width: 768px) {
+    .wy-nav-content {
+        padding: 1.618em 1em;
+    }
+}
+
+/* === ACCESSIBILITY IMPROVEMENTS === */
+/* Better focus indicators */
+*:focus {
+    outline: 2px solid var(--accent-blue);
+    outline-offset: 2px;
+}
+
+/* Improve text selection */
+::selection {
+    background-color: var(--accent-blue);
+    color: #ffffff;
+}
+
+/* === PRINT STYLES === */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+    }
+}
