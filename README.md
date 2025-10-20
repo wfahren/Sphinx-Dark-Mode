@@ -60,6 +60,11 @@ A comprehensive dark mode implementation for the Sphinx Read the Docs theme that
    make html
    ```
 
+4. **Clear browser cache** (important for seeing changes):
+   - **Hard refresh**: `Ctrl+F5` (Windows/Linux) or `Cmd+Shift+R` (Mac)
+   - **Clear cache**: Use browser developer tools to clear site data
+   - **Incognito/Private mode**: Test in a fresh browser session
+
 ## CSS File Structure
 
 The dark mode CSS is organized into logical sections:
@@ -187,8 +192,16 @@ The color scheme is designed to be accessible for users with:
    make html
    ```
 
-3. **Test across devices** and browsers
-4. **Validate accessibility** using browser dev tools
+3. **Clear browser cache** (critical step):
+   - **Hard refresh**: `Ctrl+F5` (Windows/Linux) or `Cmd+Shift+R` (Mac)
+   - **Force reload**: `Ctrl+Shift+R` in most browsers
+   - **Developer tools**: F12 → Network tab → "Disable cache" checkbox
+   - **Incognito mode**: Test in private browsing to bypass cache entirely
+
+4. **Test across devices** and browsers
+5. **Validate accessibility** using browser dev tools
+
+> **Important**: CSS changes often require a hard refresh or cache clear to be visible. If you don't see your changes immediately, try a hard refresh before assuming the CSS isn't working.
 
 ### CSS Organization
 
@@ -243,6 +256,12 @@ This dark mode CSS works seamlessly with the Enhanced Sphinx Search:
 
 **Q: Dark mode not applying**
 A: Ensure `custom.css` is in the correct path and listed in `html_css_files`
+
+**Q: CSS changes not visible**
+A: **Hard refresh your browser** (`Ctrl+F5` or `Cmd+Shift+R`) or clear browser cache. This is the most common issue when developing CSS.
+
+**Q: Navigation hover effects not working**
+A: Try a hard refresh first. If still not working, check browser developer tools to see if CSS is loading properly.
 
 **Q: Some elements still show light colors**
 A: Check for theme-specific CSS that may override the dark styles
