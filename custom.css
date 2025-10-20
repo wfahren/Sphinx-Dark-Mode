@@ -45,7 +45,6 @@ body {
 /* Navigation menu styling */
 .wy-menu-vertical a {
     color: var(--light-text);
-    transition: background-color 0.15s ease-in-out;
 }
 
 .wy-menu-vertical li.current > a {
@@ -56,9 +55,31 @@ body {
     color: var(--accent-blue);
 }
 
+/* Simple, effective navigation hover for all levels */
 .wy-menu-vertical a:hover {
-    background: var(--dark-bg-hover);
-    color: #ffffff;
+    color: white;
+    background-color: #404040;
+}
+
+/* Specific hover styles for nested navigation levels - maximum specificity */
+.wy-nav-side .wy-menu-vertical li.toctree-l1 a:hover,
+.wy-nav-side .wy-menu-vertical li.toctree-l2 a:hover,
+.wy-nav-side .wy-menu-vertical li.toctree-l3 a:hover,
+.wy-nav-side .wy-menu-vertical li.toctree-l4 a:hover {
+    color: white !important;
+    background-color: #404040 !important;
+}
+
+/* Ensure expanded sections also get hover effect */
+.wy-nav-side .wy-menu-vertical li.current ul li a:hover {
+    color: white !important;
+    background-color: #404040 !important;
+}
+
+/* Additional fallback for any nested navigation */
+.wy-nav-side .wy-menu-vertical ul li a:hover {
+    color: white !important;
+    background-color: #404040 !important;
 }
 
 /* === LINKS === */
@@ -201,3 +222,4 @@ input[type="search"]:focus {
         color: black !important;
     }
 }
+
