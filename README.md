@@ -84,74 +84,266 @@ custom.css
 
 ## Color Scheme
 
-### Primary Colors
+The dark mode CSS uses a comprehensive set of CSS variables for easy customization and maintenance. All colors are defined in the `:root` section for global access.
 
-| Element | Light Mode | Dark Mode | Usage |
-|---------|------------|-----------|-------|
-| Background | `#ffffff` | `#1e1e1e` | Main page background |
-| Text | `#404040` | `#e0e0e0` | Primary text content |
-| Sidebar | `#f8f8f8` | `#2d2d2d` | Navigation background |
-| Code Blocks | `#f8f8f8` | `#2d2d2d` | Code background |
-| Links | `#2980b9` | `#4da6e0` | Hyperlinks |
-| Borders | `#e1e4e5` | `#404040` | Dividers and borders |
+### 🎨 **CSS Variables Reference**
 
-### Accent Colors
+#### **Background Colors**
 
-- **Success**: `#27ae60` → `#2ecc71` (Green)
-- **Warning**: `#f39c12` → `#f1c40f` (Orange/Yellow)
-- **Error**: `#e74c3c` → `#e67e22` (Red/Orange)
-- **Info**: `#3498db` → `#74b9ff` (Blue)
+| Variable | Default Value | Usage |
+|----------|---------------|-------|
+| `--dark-bg` | `#1c1c1c` | Primary dark background |
+| `--dark-bg-alt` | `#282828` | Secondary background for contrast |
+| `--dark-bg-hover` | `#333333` | Hover state background |
 
-## Customization
+#### **Text Colors**
 
-### Adjusting Colors
+| Variable | Default Value | Usage |
+|----------|---------------|-------|
+| `--light-text` | `#e0e0e0` | Primary light text color |
+| `--light-text-alt` | `#c0c0c0` | Secondary light text (dimmer) |
+| `--dark-text` | `#1f1f1f` | Dark text for light backgrounds |
+| `--white-text` | `#ffffff` | Pure white text for contrast |
+| `--search-highlight-text` | `#333333` | Dark text on highlighted backgrounds |
 
-To modify the color scheme, edit the CSS variables at the top of the file:
+#### **Accent and Interactive Colors**
+
+| Variable | Default Value | Usage |
+|----------|---------------|-------|
+| `--accent-blue` | `#40B4E8` | Primary blue accent for links |
+| `--highlight-yellow` | `#f1c40f` | Search term highlighting |
+| `--hover-gray` | `#404040` | Navigation hover background |
+
+#### **Heading Colors**
+
+| Variable | Default Value | Usage |
+|----------|---------------|-------|
+| `--heading-h1` | `#0000ff` | Blue for main headings |
+| `--heading-h2` | `#008000` | Green for subheadings |
+| `--emphasis-gold` | `#daa520` | Goldenrod for emphasized text |
+| `--code-teal` | `#20b2aa` | Light sea green for inline code |
+
+#### **Navigation Hierarchy Colors**
+
+| Variable | Default Value | Usage |
+|----------|---------------|-------|
+| `--nav-current-light` | `#e3e3e3` | Light background for current items |
+| `--nav-current-l1` | `#4e4e4e` | Level 1 current page background |
+| `--nav-current-active` | `#8a8a8a` | Active current page link background |
+| `--nav-current-l2` | `#8f8f8f` | Level 2 current page background |
+| `--nav-current-l3` | `#bdbdbd` | Level 3 current page background |
+| `--nav-current-text` | `#008000` | Green text for current page links |
+
+#### **Interface Elements**
+
+| Variable | Default Value | Usage |
+|----------|---------------|-------|
+| `--border-dark` | `#555555` | Dark borders and dividers |
+| `--expand-button` | `#c2c2c2` | Tree expand button color |
+
+#### **Table Colors**
+
+| Variable | Default Value | Usage |
+|----------|---------------|-------|
+| `--table-odd` | `#2e2e2e` | Odd table row background |
+| `--table-even` | `#262626` | Even table row background |
+
+#### **Admonition Colors**
+
+| Variable | Default Value | Usage |
+|----------|---------------|-------|
+| `--warning-orange` | `#f39c12` | Orange for warning admonitions |
+| `--danger-red` | `#e74c3c` | Red for danger/error admonitions |
+
+#### **Print Mode Colors**
+
+| Variable | Default Value | Usage |
+|----------|---------------|-------|
+| `--print-bg` | `#ffffff` | White background for printing |
+| `--print-text` | `#000000` | Black text for printing |
+
+## 🎨 **Customization Guide**
+
+### **Quick Color Adjustments**
+
+The easiest way to customize the theme is by modifying the CSS variables in the `:root` section. All 37 variables are clearly documented and can be changed to match your brand or preferences.
+
+**Basic customization example:**
 
 ```css
 :root {
-  --bg-color: #1e1e1e;           /* Main background */
-  --text-color: #e0e0e0;         /* Primary text */
-  --sidebar-bg: #2d2d2d;         /* Sidebar background */
-  --accent-color: #4da6e0;       /* Links and accents */
-  --border-color: #404040;       /* Borders and dividers */
+  /* Change the main background to a warmer dark tone */
+  --dark-bg: #1a1611;
+  
+  /* Adjust the accent color to match your brand */
+  --accent-blue: #ff6b6b;
+  
+  /* Modify heading colors for better hierarchy */
+  --heading-h1: #4ecdc4;
+  --heading-h2: #45b7d1;
+  
+  /* Customize search highlighting */
+  --highlight-yellow: #feca57;
 }
 ```
 
-### Theme Variants
+### **Pre-built Theme Variants**
 
-Create different dark mode variants by adjusting the color variables:
-
-#### Midnight Blue Theme
+#### **🌊 Midnight Blue Theme**
 
 ```css
---bg-color: #0f1419;
---sidebar-bg: #1a1f2e;
---accent-color: #39d7ff;
+:root {
+  --dark-bg: #0f1419;
+  --dark-bg-alt: #1a1f2e;
+  --dark-bg-hover: #2a2f3e;
+  --accent-blue: #39d7ff;
+  --heading-h1: #74b9ff;
+  --heading-h2: #a29bfe;
+}
 ```
 
-#### Warm Dark Theme
+#### **🔥 Warm Dark Theme**
 
 ```css
---bg-color: #1a1611;
---sidebar-bg: #2a251f;
---accent-color: #ff9500;
+:root {
+  --dark-bg: #1a1611;
+  --dark-bg-alt: #2a251f;
+  --dark-bg-hover: #3a332d;
+  --accent-blue: #ff9500;
+  --heading-h1: #fdcb6e;
+  --heading-h2: #e17055;
+}
 ```
 
-### Typography Adjustments
+#### **💚 Matrix Theme**
 
-Modify font settings for better readability:
+```css
+:root {
+  --dark-bg: #0d1117;
+  --dark-bg-alt: #161b22;
+  --dark-bg-hover: #21262d;
+  --accent-blue: #00ff41;
+  --heading-h1: #00ff41;
+  --heading-h2: #39ff14;
+  --light-text: #c9d1d9;
+}
+```
+
+#### **🌸 Soft Purple Theme**
+
+```css
+:root {
+  --dark-bg: #1a1a2e;
+  --dark-bg-alt: #16213e;
+  --dark-bg-hover: #0f3460;
+  --accent-blue: #bb86fc;
+  --heading-h1: #cf6679;
+  --heading-h2: #bb86fc;
+}
+```
+
+### **Advanced Customization**
+
+#### **Navigation Hierarchy Customization**
+
+Fine-tune the navigation appearance by adjusting the hierarchy colors:
+
+```css
+:root {
+  /* Current page highlighting progression */
+  --nav-current-l1: #your-color;    /* Top level */
+  --nav-current-l2: #your-color;    /* Second level */
+  --nav-current-l3: #your-color;    /* Third level */
+  --nav-current-active: #your-color; /* Active link background */
+  --nav-current-text: #your-color;   /* Active link text */
+}
+```
+
+#### **Content-Specific Colors**
+
+```css
+:root {
+  /* Code and technical content */
+  --code-teal: #your-color;         /* Inline code color */
+  --emphasis-gold: #your-color;     /* Bold text color */
+  
+  /* Search and highlighting */
+  --highlight-yellow: #your-color;   /* Search term background */
+  --search-highlight-text: #your-color; /* Text on highlights */
+  
+  /* Tables and data presentation */
+  --table-odd: #your-color;         /* Alternating row colors */
+  --table-even: #your-color;
+}
+```
+
+### **Typography and Layout Adjustments**
+
+#### **Font Customization**
 
 ```css
 body {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Inter', 'Source Sans Pro', sans-serif;
   font-size: 16px;
   line-height: 1.6;
+  color: var(--light-text);
 }
 
+/* Heading hierarchy with variable colors */
 .rst-content h1, .rst-content h2, .rst-content h3 {
   font-weight: 600;
-  color: var(--text-color);
+}
+
+h1 { color: var(--heading-h1); }
+h2 { color: var(--heading-h2); }
+```
+
+#### **Spacing and Layout**
+
+```css
+/* Adjust content width (default: 100%) */
+.wy-nav-content {
+  max-width: 1200px !important; /* Set custom max width */
+}
+
+/* Custom spacing for better readability */
+.rst-content div[class^="highlight"] {
+  margin: 2em 0; /* Increase code block spacing */
+}
+```
+
+### **Component-Specific Customization**
+
+#### **Search Enhancement Integration**
+
+The CSS variables work seamlessly with the enhanced search system:
+
+```css
+:root {
+  /* Customize search highlighting appearance */
+  --highlight-yellow: #your-highlight-color;
+  --search-highlight-text: #your-text-color;
+}
+
+/* The search highlighting automatically uses these variables */
+span.highlighted {
+  background-color: var(--highlight-yellow) !important;
+  color: var(--search-highlight-text) !important;
+}
+```
+
+#### **Admonition Customization**
+
+```css
+:root {
+  /* Customize admonition border colors */
+  --warning-orange: #your-warning-color;
+  --danger-red: #your-danger-color;
+}
+
+/* Add custom admonition types */
+div.admonition.tip {
+  border-left: 4px solid var(--accent-blue);
 }
 ```
 
@@ -221,17 +413,58 @@ Use browser developer tools to:
 - Validate CSS performance
 - Check accessibility compliance
 
-## Integration with Search Enhancement
+## 🔍 **Integration with Enhanced Search**
 
-This dark mode CSS works seamlessly with the Enhanced Sphinx Search:
+This dark mode CSS is designed to work perfectly with the Enhanced Sphinx Search system. The search highlighting uses dedicated CSS variables for easy customization:
+
+### **Search Highlighting Variables**
 
 ```css
-/* Search result highlighting in dark mode */
-.highlighted {
-  background-color: #3a3a00;
-  color: #ffff99;
-  padding: 2px 4px;
+:root {
+  --highlight-yellow: #f1c40f;      /* Search term background */
+  --search-highlight-text: #333333;  /* Text color on highlights */
+}
+
+/* Automatic integration - no additional setup needed */
+span.highlighted,
+.rst-content .highlighted,
+.wy-nav-content-wrap .highlighted,
+article .highlighted {
+  background-color: var(--highlight-yellow) !important;
+  color: var(--search-highlight-text) !important;
+  box-shadow: 0 0 0 2px var(--highlight-yellow);
+  font-weight: 700;
+  padding: 1px 2px;
   border-radius: 2px;
+}
+```
+
+### **Custom Search Highlighting Themes**
+
+#### **Subtle Blue Highlighting**
+
+```css
+:root {
+  --highlight-yellow: #2c5aa0;
+  --search-highlight-text: #ffffff;
+}
+```
+
+#### **Green Matrix Style**
+
+```css
+:root {
+  --highlight-yellow: #00ff41;
+  --search-highlight-text: #000000;
+}
+```
+
+#### **Warm Orange Highlighting**
+
+```css
+:root {
+  --highlight-yellow: #ff9500;
+  --search-highlight-text: #ffffff;
 }
 ```
 
@@ -252,25 +485,61 @@ This dark mode CSS works seamlessly with the Enhanced Sphinx Search:
 
 ## Troubleshooting
 
-### Common Issues
+### **Common Issues and Solutions**
 
-**Q: Dark mode not applying**
-A: Ensure `custom.css` is in the correct path and listed in `html_css_files`
+**Q: Dark mode not applying**  
+A: Ensure `custom.css` is in the correct path (`source/_static/css/custom.css`) and listed in `html_css_files` in your `conf.py`
 
-**Q: CSS changes not visible**
+**Q: CSS changes not visible**  
 A: **Hard refresh your browser** (`Ctrl+F5` or `Cmd+Shift+R`) or clear browser cache. This is the most common issue when developing CSS.
 
-**Q: Navigation hover effects not working**
+**Q: Navigation hover effects not working**  
 A: Try a hard refresh first. If still not working, check browser developer tools to see if CSS is loading properly.
 
-**Q: Some elements still show light colors**
-A: Check for theme-specific CSS that may override the dark styles
+**Q: Some elements still show light colors**  
+A: Check for theme-specific CSS that may override the dark styles. Use `!important` or increase CSS specificity if needed.
 
-**Q: Text is hard to read**
-A: Adjust contrast ratios in the color variables section
+**Q: Text is hard to read**  
+A: Adjust contrast ratios using the CSS variables:
 
-**Q: Mobile layout issues**
-A: Verify responsive breakpoints are working correctly
+```css
+:root {
+  --light-text: #f0f0f0;        /* Brighter text */
+  --dark-bg: #0a0a0a;           /* Darker background */
+}
+```
+
+**Q: Custom variable changes not working**  
+A: Ensure you're modifying the `:root` section and that your custom CSS loads after the base styles.
+
+**Q: Search highlighting not visible**  
+A: Adjust the highlighting variables:
+
+```css
+:root {
+  --highlight-yellow: #your-preferred-color;
+  --search-highlight-text: #contrasting-text-color;
+}
+```
+
+**Q: Mobile layout issues**  
+A: The CSS includes responsive breakpoints. Check if custom modifications are interfering:
+
+```css
+@media (max-width: 768px) {
+  .wy-nav-content {
+    padding: 1.618em 1em;
+  }
+}
+```
+
+**Q: Variables not recognized**  
+A: Ensure your browser supports CSS custom properties (all modern browsers do). For older browser support, consider fallback values:
+
+```css
+color: #e0e0e0; /* fallback */
+color: var(--light-text, #e0e0e0); /* with fallback */
+```
 
 ### Browser-Specific Fixes
 
@@ -307,7 +576,7 @@ This CSS customization maintains the same license as your documentation project.
 
 ## Changelog
 
-### v1.0.0
+### **v1.0.0 - Initial Release**
 
 - Initial dark mode implementation
 - Complete RTD theme coverage
@@ -315,13 +584,25 @@ This CSS customization maintains the same license as your documentation project.
 - Accessibility compliance
 - Search integration support
 
-### Future Enhancements
+### **v2.0.0 - Variable-Based Architecture**
 
-- [ ] Auto dark/light mode detection
-- [ ] Theme switcher widget
-- [ ] Additional color scheme variants
-- [ ] Enhanced print styles
-- [ ] Animation preferences support
+- **37 CSS variables** for comprehensive customization
+- **Detailed documentation** with usage examples
+- **Pre-built theme variants** (Midnight Blue, Warm Dark, Matrix, Soft Purple)
+- **Component-specific customization** sections
+- **Enhanced search integration** with dedicated variables
+- **Improved navigation hierarchy** styling
+- **Better organization** and maintainability
+
+### **Future Enhancements**
+
+- [ ] Auto dark/light mode detection based on system preferences
+- [ ] JavaScript theme switcher widget
+- [ ] Additional pre-built color scheme variants
+- [ ] Enhanced print styles with better formatting
+- [ ] Animation preferences support (`prefers-reduced-motion`)
+- [ ] High contrast mode for accessibility
+- [ ] Custom font loading and typography options
 
 ---
 
