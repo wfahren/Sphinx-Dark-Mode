@@ -3,108 +3,202 @@
 /*                for Sphinx RTD Theme               */
 /* ================================================== */
 
+/* === DARK MODE COLOR SCHEME === */
+/* Define all colors as CSS variables for easy maintenance and theming */
+:root {
+    /* Background colors - main dark theme palette */
+    --dark-bg: #1c1c1c;              /* Primary dark background */
+    --dark-bg-alt: #282828;          /* Secondary background for contrast */
+    --dark-bg-hover: #333333;        /* Hover state background */
+    
+    /* Text colors - various shades for hierarchy */
+    --light-text: #e0e0e0;           /* Primary light text color */
+    --light-text-alt: #c0c0c0;       /* Secondary light text (slightly dimmer) */
+    --dark-text: #1f1f1f;            /* Dark text for light backgrounds */
+    --white-text: #ffffff;           /* Pure white text for contrast */
+    --search-highlight-text: #333333; /* Dark text on highlighted backgrounds */
+    
+    /* Accent and interactive colors */
+    --accent-blue: #40B4E8;          /* Primary blue accent for links */
+    --highlight-yellow: #f1c40f;     /* Search term highlighting */
+    --hover-gray: #404040;           /* Navigation hover background */
+    
+    /* Heading colors */
+    --heading-h1: #0000ff;           /* Blue for main headings */
+    --heading-h2: #008000;           /* Green for subheadings */
+    --emphasis-gold: #daa520;        /* Goldenrod for emphasized text */
+    --code-teal: #20b2aa;            /* Light sea green for inline code */
+    
+    /* Navigation current page hierarchy */
+    --nav-current-light: #e3e3e3;    /* Light background for current items */
+    --nav-current-l1: #4e4e4e;       /* Level 1 current page background */
+    --nav-current-active: #8a8a8a;   /* Active current page link background */
+    --nav-current-l2: #8f8f8f;       /* Level 2 current page background */
+    --nav-current-l3: #bdbdbd;       /* Level 3 current page background */
+    --nav-current-text: #008000;     /* Green text for current page links */
+    
+    /* Interface elements */  
+    --border-dark: #555555;          /* Dark borders and dividers */
+    --expand-button: #c2c2c2;        /* Tree expand button color */
+    
+    /* Table colors for alternating rows */
+    --table-odd: #2e2e2e;            /* Odd table row background */
+    --table-even: #262626;           /* Even table row background */
+    
+    /* Admonition (note/warning) accent colors */
+    --warning-orange: #f39c12;       /* Orange for warning admonitions */
+    --danger-red: #e74c3c;           /* Red for danger/error admonitions */
+    
+    /* Print mode colors */
+    --print-bg: #ffffff;             /* White background for printing */
+    --print-text: #000000;           /* Black text for printing */
+}
+
 /* === LAYOUT OVERRIDES === */
+/* Remove RTD theme's content width restriction for full-width layouts */
 .wy-nav-content {
     max-width: 100% !important;
 }
 
-/* === DARK MODE COLOR SCHEME === */
-:root {
-    /* Define color variables for consistency */
-    --dark-bg: #1c1c1c;
-    --dark-bg-alt: #282828;
-    --dark-bg-hover: #333333;
-    --light-text: #e0e0e0;
-    --light-text-alt: #c0c0c0;
-    --accent-blue: #40B4E8;
-    --link-blue: #0567b8;
-    --highlight-yellow: #f1c40f;
-    --border-dark: #555555;
-    --table-odd: #2e2e2e;
-    --table-even: #262626;
-}
-
 /* === BODY AND MAIN CONTENT === */
+/* Set the primary dark background and text color for the entire page */
 body {
     background-color: var(--dark-bg);
     color: var(--light-text);
 }
 
+/* Ensure content areas inherit the dark background */
 .wy-nav-content,
 .wy-nav-content-wrap {
     background-color: var(--dark-bg);
 }
 
 /* === SIDEBAR AND NAVIGATION === */
+/* Style the top navigation and search areas with dark theme */
 .wy-side-nav-search, 
 .wy-nav-top {
     background: var(--dark-bg-alt);
     border-color: var(--border-dark);
 }
 
-/* Navigation menu styling */
+/* Base navigation menu styling - remove borders and set text colors */
 .wy-menu-vertical a {
     color: var(--light-text);
+    border: none;
 }
 
+/* Top-level navigation links use slightly dimmer text */
+.wy-menu-vertical li.toctree-l1 > a {
+    color: var(--light-text-alt);
+}
+
+/* Nested navigation levels use dark text (appears on lighter backgrounds) */
+.wy-menu-vertical li.toctree-l2 > a,
+.wy-menu-vertical li.toctree-l3 > a,
+.wy-menu-vertical li.toctree-l4 > a {
+    color: var(--dark-text);
+}
+
+/* Navigation hover effects - unified styling for all navigation levels */
+/* Provides consistent white text on gray background for all hover states */
+.wy-menu-vertical a:hover,
+.wy-nav-side .wy-menu-vertical li.toctree-l2 a:hover,
+.wy-nav-side .wy-menu-vertical li.toctree-l3 a:hover,
+.wy-nav-side .wy-menu-vertical li.toctree-l4 a:hover,
+.wy-nav-side .wy-menu-vertical li.current ul li a:hover,
+.wy-nav-side .wy-menu-vertical ul li a:hover {
+    color: var(--white-text) !important;
+    background-color: var(--hover-gray) !important;
+}
+
+/* Current page styling - visual hierarchy for active navigation */
+/* Base current page background (light gray) */
+.wy-menu-vertical li.current {
+    background: var(--nav-current-light);
+}
+
+/* Current page link gets hover-style background */
 .wy-menu-vertical li.current > a {
     background: var(--dark-bg-hover);
 }
 
-.wy-menu-vertical li.toctree-l1.current > a {
-    color: var(--accent-blue);
+/* Current page backgrounds for all navigation levels */
+.wy-menu-vertical li.toctree-l1.current,
+.wy-menu-vertical li.toctree-l2.current,
+.wy-menu-vertical li.toctree-l3.current,
+.wy-menu-vertical li.toctree-l4.current {
+    background: var(--nav-current-l1);
 }
 
-/* Simple, effective navigation hover for all levels */
-.wy-menu-vertical a:hover {
-    color: white;
-    background-color: #404040;
+/* Active current page links - gray background with green text for visibility */
+.wy-menu-vertical li.toctree-l1.current > a,
+.wy-menu-vertical li.toctree-l2.current > a,
+.wy-menu-vertical li.toctree-l3.current > a,
+.wy-menu-vertical li.toctree-l4.current > a {
+    background: var(--nav-current-active);
+    color: var(--nav-current-text);
 }
 
-/* Specific hover styles for nested navigation levels - maximum specificity */
-.wy-nav-side .wy-menu-vertical li.toctree-l1 a:hover,
-.wy-nav-side .wy-menu-vertical li.toctree-l2 a:hover,
-.wy-nav-side .wy-menu-vertical li.toctree-l3 a:hover,
-.wy-nav-side .wy-menu-vertical li.toctree-l4 a:hover {
-    color: white !important;
-    background-color: #404040 !important;
+/* Level 2 current page specific styling */
+.wy-menu-vertical li.toctree-l2.current > a,
+.wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a {
+    background: var(--nav-current-l2);
 }
 
-/* Ensure expanded sections also get hover effect */
-.wy-nav-side .wy-menu-vertical li.current ul li a:hover {
-    color: white !important;
-    background-color: #404040 !important;
+/* Level 3 current page specific styling */
+.wy-menu-vertical li.toctree-l3.current > a,
+.wy-menu-vertical li.toctree-l3.current li.toctree-l4 > a {
+    background: var(--nav-current-l3);
 }
 
-/* Additional fallback for any nested navigation */
-.wy-nav-side .wy-menu-vertical ul li a:hover {
-    color: white !important;
-    background-color: #404040 !important;
+/* Tree expand/collapse button styling */
+button.toctree-expand {
+    color: var(--expand-button) !important;
+}
+
+
+/* === HEADINGS === */
+/* Main page headings - blue for primary hierarchy */
+h1 {
+    color: var(--heading-h1);
+}
+
+/* Subheadings - green for secondary hierarchy */
+h2 {
+    color: var(--heading-h2);
 }
 
 /* === LINKS === */
-/* General links - consolidated from duplicates */
+/* Standard link styling - blue accent color for all link states */
 a, 
 a:link, 
 a:visited {
     color: var(--accent-blue);
 }
 
+/* Link hover state - white text for better contrast */
 a:hover {
-    color: #ffffff;
+    color: var(--white-text);
+}
+
+/* === TEXT FORMATTING === */
+/* Bold/emphasized text (**text** in markdown) - gold color for emphasis */
+strong {
+    color: var(--emphasis-gold); 
+    font-weight: 700;
 }
 
 /* === CODE BLOCKS === */
-/* Inline code */
+/* Inline code styling (`code` in markdown) - teal text with dark background */
 code.docutils.literal {
-    color: var(--light-text);
+    color: var(--code-teal);
     background-color: var(--dark-bg-hover);
     border: 1px solid var(--border-dark);
     padding: 2px 4px;
     border-radius: 3px;
 }
 
-/* Code blocks with syntax highlighting */
+/* Multi-line code blocks with syntax highlighting */
 div.highlight pre {
     background-color: var(--dark-bg-alt) !important;
     color: var(--light-text);
@@ -112,21 +206,21 @@ div.highlight pre {
 }
 
 /* === TABLES === */
-/* Table headers */
+/* Table headers - dark background with white text for contrast */
 table.docutils th {
     background-color: var(--dark-bg) !important;
-    color: #ffffff !important;
+    color: var(--white-text) !important;
     border-color: var(--border-dark) !important;
 }
 
-/* Table cells - inherit from rows */
+/* Table cells - inherit colors from parent rows */
 table.docutils td {
     background-color: inherit !important;
     color: inherit !important;
     border-color: var(--border-dark) !important;
 }
 
-/* Table rows - improved contrast */
+/* Alternating table row colors for improved readability */
 .row-odd {
     background: var(--table-odd) !important;
     color: var(--light-text) !important;
@@ -138,37 +232,43 @@ table.docutils td {
 }
 
 /* === ADMONITIONS (Notes, Warnings, etc.) === */
+/* Base styling for all admonition boxes (.. note::, .. warning::, etc.) */
 div.admonition {
     background-color: var(--dark-bg-alt);
     border-color: var(--border-dark);
     color: var(--light-text);
 }
 
+/* Ensure admonition text remains readable */
 div.admonition p {
     color: var(--light-text);
 }
 
-/* Specific admonition types */
+/* Specific admonition types with colored left borders for visual distinction */
+/* Note admonitions - blue accent border */
 div.admonition.note {
     border-left: 4px solid var(--accent-blue);
 }
 
+/* Warning admonitions - orange border */
 div.admonition.warning {
-    border-left: 4px solid #f39c12;
+    border-left: 4px solid var(--warning-orange);
 }
 
+/* Danger/error admonitions - red border */
 div.admonition.danger {
-    border-left: 4px solid #e74c3c;
+    border-left: 4px solid var(--danger-red);
 }
 
 /* === SEARCH HIGHLIGHTING === */
-/* Consolidated and improved search highlights */
+/* Enhanced search term highlighting - works with search-phrase.js */
+/* Yellow background with dark text and subtle glow effect */
 span.highlighted,
 .rst-content .highlighted,
 .wy-nav-content-wrap .highlighted,
 article .highlighted {
     background-color: var(--highlight-yellow) !important;
-    color: #333333 !important;
+    color: var(--search-highlight-text) !important;
     box-shadow: 0 0 0 2px var(--highlight-yellow);
     font-weight: 700;
     padding: 1px 2px;
@@ -176,6 +276,7 @@ article .highlighted {
 }
 
 /* === FORMS AND INPUTS === */
+/* Search input and form fields with dark theme styling */
 input[type="text"],
 input[type="search"] {
     background-color: var(--dark-bg-alt);
@@ -183,6 +284,7 @@ input[type="search"] {
     border: 1px solid var(--border-dark);
 }
 
+/* Input focus states - brighter background and blue border */
 input[type="text"]:focus,
 input[type="search"]:focus {
     background-color: var(--dark-bg-hover);
@@ -190,12 +292,13 @@ input[type="search"]:focus {
 }
 
 /* === CONTENT SECTIONS === */
-/* Improve readability of content sections */
+/* Add proper spacing around highlighted code sections */
 .rst-content div[class^="highlight"] {
     margin: 1em 0;
 }
 
 /* === RESPONSIVE IMPROVEMENTS === */
+/* Mobile-friendly padding adjustments for smaller screens */
 @media (max-width: 768px) {
     .wy-nav-content {
         padding: 1.618em 1em;
@@ -203,23 +306,18 @@ input[type="search"]:focus {
 }
 
 /* === ACCESSIBILITY IMPROVEMENTS === */
-/* Better focus indicators */
-*:focus {
-    outline: 2px solid var(--accent-blue);
-    outline-offset: 2px;
-}
-
-/* Improve text selection */
+/* Custom text selection highlighting - blue background with white text */
 ::selection {
     background-color: var(--accent-blue);
-    color: #ffffff;
+    color: var(--white-text);
 }
 
 /* === PRINT STYLES === */
+/* Print-friendly styling - revert to standard black text on white background */
 @media print {
     body {
-        background: white !important;
-        color: black !important;
+        background: var(--print-bg) !important;
+        color: var(--print-text) !important;
     }
 }
 
