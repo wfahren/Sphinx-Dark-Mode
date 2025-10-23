@@ -85,6 +85,7 @@ body {
 .wy-menu-vertical a {
     color: var(--light-text);
     border: none;
+    padding: 1.4045em 1.618em;
 }
 
 /* Top-level navigation links use slightly dimmer text */
@@ -154,6 +155,11 @@ body {
 /* Tree expand/collapse button styling */
 button.toctree-expand {
     color: var(--expand-button) !important;
+}
+
+.wy-menu-vertical li.current a {
+    border: none;
+    padding: 1.4045em 2.427em;
 }
 
 
