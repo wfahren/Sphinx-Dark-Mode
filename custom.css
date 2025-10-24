@@ -10,6 +10,7 @@
     --dark-bg: #1c1c1c;              /* Primary dark background */
     --dark-bg-alt: #282828;          /* Secondary background for contrast */
     --dark-bg-hover: #333333;        /* Hover state background */
+    --dark-bg-code: #171717;         /* Background for code blocks */
     
     /* Text colors - various shades for hierarchy */
     --light-text: #e0e0e0;           /* Primary light text color */
@@ -55,7 +56,7 @@
 }
 
 /* === LAYOUT OVERRIDES === */
-/* Remove RTD theme's content width restriction for full-width layouts */
+/* Increase content width beyond RTD theme default while keeping code blocks reasonable */
 .wy-nav-content {
     max-width: 100% !important;
 }
@@ -206,35 +207,79 @@ code.docutils.literal {
 
 /* Multi-line code blocks with syntax highlighting */
 div.highlight pre {
-    background-color: var(--dark-bg-alt) !important;
+    background-color: var(--dark-bg-code) !important;
     color: var(--light-text);
     border: 1px solid var(--border-dark);
+    overflow-x: auto; /* Enable horizontal scrolling for long lines */
+    min-width: 700px;
+    width: fit-content; /* Auto-size to content width */
+    max-width: 100%; /* Prevent code blocks from exceeding container */
+    box-sizing: border-box; /* Include padding and borders in width calculation */
+}
+
+/* Code block containers - prevent full-width expansion */
+div.highlight,
+.rst-content div[class^="highlight"] {
+    width: fit-content; /* Auto-size container to content */
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 1em 0;
 }
 
 /* === TABLES === */
 /* Table headers - dark background with white text for contrast */
-table.docutils th {
+table.docutils th,
+table th,
+.rst-content table.docutils th {
     background-color: var(--dark-bg) !important;
     color: var(--white-text) !important;
-    border-color: var(--border-dark) !important;
+    border: 1px solid var(--border-dark) !important;
+    padding: 8px 12px !important;
 }
 
 /* Table cells - inherit colors from parent rows */
-table.docutils td {
+table.docutils td,
+table td,
+.rst-content table.docutils td {
     background-color: inherit !important;
     color: inherit !important;
-    border-color: var(--border-dark) !important;
+    border: 1px solid var(--border-dark) !important;
+    padding: 8px 12px !important;
+}
+
+/* Base table styling */
+table.docutils,
+table,
+.rst-content table.docutils {
+    border-collapse: collapse !important;
+    border: 1px solid var(--border-dark) !important;
+    width: auto; /* Auto-size to content instead of 100% */
+    margin: 1em 0;
 }
 
 /* Alternating table row colors for improved readability */
-.row-odd {
+/* Support multiple row class naming conventions */
+.row-odd,
+tr:nth-child(odd),
+table.docutils tbody tr:nth-child(odd),
+.rst-content table.docutils tbody tr:nth-child(odd) {
     background: var(--table-odd) !important;
     color: var(--light-text) !important;
 }
 
-.row-even {
+.row-even,
+tr:nth-child(even),
+table.docutils tbody tr:nth-child(even),
+.rst-content table.docutils tbody tr:nth-child(even) {
     background: var(--table-even) !important;
     color: var(--light-text-alt) !important;
+}
+
+/* Table hover effects for better UX */
+table.docutils tbody tr:hover,
+.rst-content table.docutils tbody tr:hover {
+    background-color: var(--dark-bg-hover) !important;
+    color: var(--white-text) !important;
 }
 
 /* === ADMONITIONS (Notes, Warnings, etc.) === */
@@ -295,12 +340,6 @@ input[type="text"]:focus,
 input[type="search"]:focus {
     background-color: var(--dark-bg-hover);
     border-color: var(--accent-blue);
-}
-
-/* === CONTENT SECTIONS === */
-/* Add proper spacing around highlighted code sections */
-.rst-content div[class^="highlight"] {
-    margin: 1em 0;
 }
 
 /* === RESPONSIVE IMPROVEMENTS === */
