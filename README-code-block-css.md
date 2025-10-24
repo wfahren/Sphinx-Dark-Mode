@@ -30,7 +30,7 @@ The theme uses a balanced color palette designed for:
 |------------|-------|--------------|-------------|
 | `.highlight .c` | `#408090` | italic | General comments |
 | `.highlight .ch` | `#408090` | italic | Hashbang comments (#!/bin/bash) |
-| `.highlight .cm` | `#408090` | italic | Multi-line comments (/* ... */) |
+| `.highlight .cm` | `#408090` | italic | Multi-line comments (/*...*/) |
 | `.highlight .cp` | `#007020` | normal | Preprocessor comments (#include) |
 | `.highlight .cpf` | `#408090` | italic | Preprocessor file comments |
 | `.highlight .c1` | `#408090` | italic | Single-line comments (//, #) |
@@ -103,11 +103,11 @@ The theme uses a balanced color palette designed for:
 | Class Name | Color | Weight/Style | Description |
 |------------|-------|--------------|-------------|
 | `.highlight .bp` | `#007020` | normal | Built-in pseudo variables |
-| `.highlight .fm` | `#06287E` | normal | Magic function names (__init__) |
+| `.highlight .fm` | `#06287E` | normal | Magic function names (**init**) |
 | `.highlight .vc` | `#BB60D5` | normal | Class variables |
 | `.highlight .vg` | `#BB60D5` | normal | Global variables |
 | `.highlight .vi` | `#BB60D5` | normal | Instance variables |
-| `.highlight .vm` | `#BB60D5` | normal | Magic variables (__name__) |
+| `.highlight .vm` | `#BB60D5` | normal | Magic variables (**name**) |
 
 ### 🚨 **Error & Generic Elements**
 
@@ -132,7 +132,7 @@ The theme uses a balanced color palette designed for:
 ### Installation
 
 1. **Add the CSS file** to your Sphinx project:
-   ```
+   ```bash
    source/_static/css/code-block.css
    ```
 
